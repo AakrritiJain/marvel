@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {ComicCard} from "./ComicCard";
-import {TextBlock} from "./TextBlock";
+import {TextBlock} from "../../base/TextBlock";
 
 const StyledCardContainer = styled.div`
     margin: 0 23%;

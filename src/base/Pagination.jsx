@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import RightArrow from "../../icons/rightArrow";
-import LeftArrow from "../../icons/leftArrow";
+import RightArrow from "./icons/rightArrow";
+import LeftArrow from "./icons/leftArrow";
 
 const StyledNode = styled.button`
     min-width: 30px;
@@ -22,8 +22,10 @@ const StyledNode = styled.button`
 `
 
 const arrowStyles = {position: "absolute", top: "0", right: "0"};
-
 export const Pagination = ({totalPages, currentPage, onPageChange}) => {
+    if(totalPages === 0 || totalPages === 1)
+          return <StyledNode isSelected>{currentPage}</StyledNode>;
+    
     // push first page number
     const nodes = [<StyledNode isSelected={currentPage === 1} onClick={() => onPageChange(1)}>1</StyledNode>];
 
@@ -49,6 +51,7 @@ export const Pagination = ({totalPages, currentPage, onPageChange}) => {
         <StyledNode
             disabled={currentPage === 1}
             onClick={() => onPageChange(currentPage - 1)}
+            aria-label={"previous"}
         >
             <LeftArrow style={arrowStyles}/>
         </StyledNode>
@@ -56,6 +59,7 @@ export const Pagination = ({totalPages, currentPage, onPageChange}) => {
         <StyledNode
             disabled={currentPage === totalPages}
             onClick={() => onPageChange(currentPage + 1)}
+            aria-label={"next"}
         >
             <RightArrow style={arrowStyles}/>
         </StyledNode>

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {Pagination} from "./Pagination";
+import {Pagination} from "../../base/Pagination";
 
 const StyledPageContainer = styled.div`
     margin: 3% 23%;

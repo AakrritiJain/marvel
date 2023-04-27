@@ -2,39 +2,10 @@ import React, {useState} from "react";
 import {useQuery} from "react-query";
 import styled from "styled-components";
 import {getURL} from "../../utils/helper";
-import {Image} from "../../base/Image";
-import Checked from "../../base/icons/checked";
 import LeftArrow from "../../base/icons/leftArrow";
 import RightArrow from "../../base/icons/rightArrow";
 import {TextBlock} from "../../base/TextBlock";
-
-const OverlapImage = styled(Checked)`
-    z-index: 2;
-    position: absolute;
-    top: 10px;
-    left: 20px;      
-`;
-
-const FilterCard = ({character, isSelected, onFilterChange}) => {
-    const handleClick = (event) => {
-        event.preventDefault();
-        onFilterChange(character);
-    };
-    return <button
-        key={character.id}
-        onClick={handleClick}
-        style={{
-            position: "relative",
-            cursor: "pointer",
-            backgroundColor: "transparent",
-            outline: "none",
-            border: "none"
-        }}>
-        {isSelected && <OverlapImage/>}
-        <Image isSelected={isSelected} width={"80px"} height={"80px"} borderRadius={"50%"}
-               src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={character.name}/>
-    </button>
-};
+import {FilterCard} from "../components/filterCard";
 
 const StyledContainer = styled.div`
     height: 100px; 
@@ -83,7 +54,6 @@ const StyledArrow = styled.button`
 `
 
 const LIMIT = 8;
-// 157
 
 export const Filter = React.memo(({onFilterChange, filters, onClearFilters}) => {
     const [currentPage, setCurrentPageNumber] = useState(1);
@@ -107,7 +77,7 @@ export const Filter = React.memo(({onFilterChange, filters, onClearFilters}) => 
 
     return <>
         <StyledContainer>
-            {(isLoading || isRefetching) ? <TextBlock>Loading...</TextBlock>
+            {(isLoading || isRefetching) ? <TextBlock/>
                 : (<>
                     <StyledArrow disabled={currentPage === 1} onClick={() => onPageChange(currentPage - 1)}>
                         <LeftArrow fill={"#43A047"} width={"50px"} height={"50px"}/>

@@ -1,5 +1,5 @@
-import MarvelLogo from "../icons/marvel_logo";
-import {SearchInput} from "./searchInput";
+import MarvelLogo from "../../base/icons/marvel_logo";
+import {SearchInput} from "../../base/searchInput";
 import React from "react";
 import styled from "styled-components";
 
@@ -15,8 +15,8 @@ const StyledHeader = styled.header`
 `;
 
 export const Header = ({onSearch}) => {
-    return <StyledHeader>
+    return <StyledHeader aria-label={"Marvel"}>
         <MarvelLogo/>
-        <SearchInput placeholder={"Search for comics..."} onSearch={onSearch}/>
+        <SearchInput aria-label={"Search Comics"} placeholder={"Search for comics..."} onSearch={onSearch}/>
     </StyledHeader>
 };

@@ -1,10 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import {Image} from "./Image";
+import {Image} from "../../base/Image";
 
 const StyledCard = styled.div`
     width: 195px;
     height: 250px; 
+    &:focus {
+       border-radius: ${(props) => (props.borderRadius ? props.borderRadius : "0")};
+       border: 2px solid #43A047; 
+    }
 `
 
 const Details = styled.div`
@@ -26,7 +30,7 @@ const Details = styled.div`
 
 export const ComicCard = React.memo(({comic}) => {
     const title = comic.title.split("#")[0];
-    return <StyledCard>
+    return <StyledCard tabIndex={0}>
         <Image width={"195px"} height={"200px"} src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={comic.title}/>
         <Details>
             <p>{title}</p>

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Search from "../../icons/search";
+import Search from "./icons/search";
 
 const StyledIcon = styled(Search)`
     position: absolute;
